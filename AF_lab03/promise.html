@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Promise</h2>
+<p id="demo"></p>
+
+<script>
+function myMarksDisplayer(message) {
+    document.getElementById("demo").innerHTML = message;
+}
+
+let myPromise = new Promise(function (myResolve, myReject) {
+    let marks = 60; // try -10 or 120 to see error
+
+    if (marks >= 0 && marks <= 100) {
+        myResolve("Your marks are: " + marks);
+    } else {
+        myReject("Error: Marks must be between 0 and 100");
+    }
+});
+
+myPromise.then(
+    function (value) {
+        myMarksDisplayer(value);
+    },
+    function (error) {
+        myMarksDisplayer(error);
+    }
+);
+</script>
+
+</body>
+</html>
